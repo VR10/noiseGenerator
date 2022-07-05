@@ -7,13 +7,11 @@ from random import shuffle
 from datetime import date
 
 #the amount of noise generated in %
-noise_level=5
-if(noise_level>=50):
-    print("Script is only built for noise generation sub 50%")
-    exit()
+noise_level=10
 
-training_data = 'C:/Users/vince/Desktop/Studium/Thesis/FB15K-237.2/Release/train.txt'
-data = pd.read_csv(training_data, sep='\t',header=None)
+
+valid_data = 'C:/Users/vince/Desktop/Studium/Thesis/FB15K-237.2/Release/valid.txt'
+data = pd.read_csv(valid_data, sep='\t', header=None)
 data.columns=["head","relation","tail"]
 rows=(len(data.index))
 
@@ -45,5 +43,5 @@ for x in range(len(donor_triples)):
         data['tail'][acceptor_triples[x]]=data['tail'][donor_triples[x]]
 
 print(data.head())
-outputfile='fb15k-237_train'+'_noise_'+str(noise_level)+'.txt'
+outputfile='fb15k-237_valid'+'_noise_'+str(noise_level)+'.txt'
 data.to_csv(outputfile,sep='\t',header=False,index=False)
