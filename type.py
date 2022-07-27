@@ -11,10 +11,10 @@ noise_levels=[0,1,2,5,10]
 for x in noise_levels:
     noise_level = x
 
-    training_data = 'C:/Users/vince/Desktop/Studium/Thesis/FB15K-237.2/Release/valid.txt'
+    input_data = 'C:/Users/vince/Desktop/Studium/Thesis/experiments/wnrr/data/valid.txt'
     # training_data = "C:/Users/vince/Desktop/test/train.txt"
 
-    data = pd.read_csv(training_data, sep='\t', header=None)
+    data = pd.read_csv(input_data, sep='\t', header=None)
     data.columns = ["head", "relation", "tail"]
     rows = (len(data.index))
     uniqueRelations = np.array(data.relation.unique())
@@ -47,7 +47,7 @@ for x in noise_levels:
         i += 1
         print("Modified: " + str(typeArray[0]))
     print('done')
-    outputfile = 'fb15k-237_valid_noise_' + str(noise_level) + '_type.txt'
+    outputfile = 'wnrr_valid_noise_' + str(noise_level) + '_type.txt'
     data.to_csv(outputfile, sep='\t', header=False, index=False)
 
 

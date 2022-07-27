@@ -11,7 +11,7 @@ noise_levels=[0,1,2,5,10]
 # the amount of noise generated in %
 for x in noise_levels:
     noise_level=x
-    valid_data = 'C:/Users/vince/Desktop/Studium/Thesis/experiments/wnrr/data/valid.txt'
+    valid_data = 'C:/Users/vince/Desktop/Studium/Thesis/experiments/wnrr/data/train.txt'
     data = pd.read_csv(valid_data, sep='\t', header=None)
     data.columns = ["head", "relation", "tail"]
     rows = (len(data.index))
@@ -44,7 +44,8 @@ for x in noise_levels:
             data['tail'][acceptor_triples[x]] = data['tail'][donor_triples[x]].copy()
 
     print(data.head())
-    outputfile = 'wnrr_valid' + '_noise_' + str(noise_level) + '.txt'
+    outputfile = 'wnrr_train' + '_noise_' + str(noise_level) + '.txt'
     data.to_csv(outputfile, sep='\t', header=False, index=False)
+print("done")
 
 
